@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#38217f">
+  <meta name="description" content="A friendly Grade 10 quadratic equation solver with clear, step-by-step explanations.">
+  <title>Grade 10 Math Lab | Quadratic Equations</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="solver.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="brand-mark" aria-hidden="true">x²</div>
+      <div>
+        <p class="eyebrow">GRADE 10 · MATH LAB</p>
+        <h1>Quadratic Equation Solver</h1>
+        <p class="hero-subtitle">Understand the steps. Solve with confidence.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="formula-card" aria-labelledby="standard-form-title">
+      <div>
+        <p class="eyebrow purple-text" id="standard-form-title">THE STANDARD FORM</p>
+        <p class="standard-form" aria-label="a x squared plus b x plus c equals zero">ax² + bx + c = 0</p>
+        <p class="equation-preview" id="equation-preview">Enter a, b and c to preview your equation.</p>
+      </div>
+      <div class="formula-badge" aria-hidden="true">a ≠ 0</div>
+    </section>
+
+    <section class="card input-card" aria-labelledby="input-title">
+      <div class="section-heading">
+        <span class="step-number">01</span>
+        <div>
+          <h2 id="input-title">Enter the coefficients</h2>
+          <p>Use the numbers from your equation in standard form.</p>
+        </div>
+      </div>
+
+      <form id="solver-form" novalidate>
+        <div class="coefficient-grid">
+          <label class="coefficient-tile coefficient-a">
+            <span class="coefficient-letter">a</span>
+            <span class="coefficient-meaning">number multiplying x²</span>
+            <input id="coefficient-a" name="a" type="number" inputmode="decimal" step="any" value="1" required aria-label="Coefficient a, the number multiplying x squared">
+          </label>
+          <label class="coefficient-tile coefficient-b">
+            <span class="coefficient-letter">b</span>
+            <span class="coefficient-meaning">number multiplying x</span>
+            <input id="coefficient-b" name="b" type="number" inputmode="decimal" step="any" value="-5" required aria-label="Coefficient b, the number multiplying x">
+          </label>
+          <label class="coefficient-tile coefficient-c">
+            <span class="coefficient-letter">c</span>
+            <span class="coefficient-meaning">number on its own</span>
+            <input id="coefficient-c" name="c" type="number" inputmode="decimal" step="any" value="6" required aria-label="Coefficient c, the constant number">
+          </label>
+        </div>
+        <p class="input-tip"><span aria-hidden="true">✦</span> Whole numbers like 1, −5 and 6 work. You do not need to type .0.</p>
+
+        <fieldset class="method-picker">
+          <legend><span class="step-number small-step">02</span> Choose a method</legend>
+          <label class="method-option">
+            <input type="radio" name="method" value="formula" checked>
+            <span class="radio-card"><span class="radio-icon" aria-hidden="true">±</span><span><strong>Quadratic Formula</strong><small>Works for every quadratic equation</small></span></span>
+          </label>
+          <label class="method-option">
+            <input type="radio" name="method" value="square">
+            <span class="radio-card"><span class="radio-icon square-icon" aria-hidden="true">□</span><span><strong>Completing the Square</strong><small>Rewrite the equation as a perfect square</small></span></span>
+          </label>
+        </fieldset>
+
+        <div class="button-row">
+          <button class="button button-primary" type="submit"><span aria-hidden="true">▶</span> Solve step by step</button>
+          <button class="button button-secondary" id="explain-button" type="button">How it works</button>
+          <button class="button button-example" id="example-button" type="button">Try an example</button>
+          <button class="button button-quiet" id="clear-button" type="button">Clear</button>
+        </div>
+        <p class="form-message" id="form-message" role="alert" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="card result-card" aria-labelledby="working-title">
+      <div class="result-heading">
+        <div class="section-heading">
+          <span class="step-number">03</span>
+          <div>
+            <h2 id="working-title">Your working</h2>
+            <p>Follow each calculation, then check the answers.</p>
+          </div>
+        </div>
+        <span class="answer-label">STEPS + ANSWER</span>
+      </div>
+      <div class="result-content" id="result-content" aria-live="polite">
+        <div class="welcome-state">
+          <span class="welcome-icon" aria-hidden="true">✎</span>
+          <h3>Ready when you are</h3>
+          <p>Enter the coefficients, choose a method and press <strong>Solve step by step</strong>.</p>
+        </div>
+      </div>
+    </section>
+
+    <details class="card guide-card">
+      <summary>
+        <span class="guide-icon" aria-hidden="true">?</span>
+        <span><strong>Quick guide</strong><small>What do a, b, c and the symbols mean?</small></span>
+        <span class="summary-arrow" aria-hidden="true">⌄</span>
+      </summary>
+      <div class="guide-content">
+        <h3>Reading the equation</h3>
+        <p>In <strong>ax² + bx + c = 0</strong>, <strong>a</strong> multiplies x², <strong>b</strong> multiplies x, and <strong>c</strong> is the constant number. Keep the sign with its number: in x² − 5x + 6 = 0, b = −5.</p>
+        <h3>Symbols</h3>
+        <p><strong>x²</strong> means x multiplied by itself. <strong>√</strong> means square root. <strong>±</strong> means calculate once using plus and again using minus.</p>
+        <h3>The discriminant</h3>
+        <p><strong>D = b² − 4ac.</strong> If D is positive there are two real answers; if D is zero there is one repeated answer; if D is negative there are no real-number answers.</p>
+      </div>
+    </details>
+
+    <section class="card feedback-card" aria-labelledby="feedback-title">
+      <div class="section-heading">
+        <span class="feedback-icon" aria-hidden="true">♡</span>
+        <div>
+          <h2 id="feedback-title">Questions or feedback?</h2>
+          <p>Write a note and copy it to share with your teacher.</p>
+        </div>
+      </div>
+      <label class="visually-hidden" for="feedback-note">Your question or feedback</label>
+      <textarea id="feedback-note" rows="3" placeholder="For example: I need help understanding step 3…"></textarea>
+      <div class="feedback-actions">
+        <button class="button button-secondary" id="copy-feedback-button" type="button">Copy note for teacher</button>
+        <span id="feedback-status" class="feedback-status" role="status" aria-live="polite">Your note stays on this device; it is not sent or saved.</span>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>Grade 10 Math Lab</span>
+      <span>Made for learning, one step at a time.</span>
+    </footer>
+  </main>
+</body>
+</html>
